@@ -30,7 +30,7 @@ struct ProfilePictureView: View {
                             .shadow(color: Color.theme.accent.opacity(0.3), radius: 50)
                     })
                     
-                    RoundButtonWithIcon(systemName: "pencil")
+                    RoundButtonWithIcon(systemName: "pencil", size: 32, backgroundColor: .white, imageColor: Color.theme.accent)
                 }
                 .padding(.top, 28)
                 

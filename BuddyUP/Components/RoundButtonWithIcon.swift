@@ -10,15 +10,18 @@ import SwiftUI
 struct RoundButtonWithIcon: View {
     
     let systemName: String
+    let size: CGFloat
+    let backgroundColor: Color?
+    let imageColor: Color?
     
     var body: some View {
         ZStack(alignment: .center) {
             Circle()
-                .foregroundColor(.white)
-                .frame(width: 37, height: 37)
+                .foregroundColor(backgroundColor)
+                .frame(width: size, height: size)
                 .shadow(color: Color.theme.accent.opacity(0.3), radius: 30)
             Image(systemName: systemName)
-                .foregroundColor(Color.theme.accent)
+                .foregroundColor(imageColor)
                 .font(.title3)
                 .bold()
         }
@@ -28,6 +31,6 @@ struct RoundButtonWithIcon: View {
 
 struct RoundButtonWithIcon_Previews: PreviewProvider {
     static var previews: some View {
-        RoundButtonWithIcon(systemName: "pencil")
-    }
+        RoundButtonWithIcon(systemName: "pencil", size: 32, backgroundColor: .white, imageColor: Color.theme.accent)
+    ]
 }
