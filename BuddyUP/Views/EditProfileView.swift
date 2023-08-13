@@ -26,7 +26,10 @@ struct EditProfileView: View {
                                 .shadow(color: Color.theme.accent.opacity(0.3), radius: 50)
                         })
                         
-                        RoundButtonWithIcon(systemName: "pencil", size: 32, backgroundColor: .white, imageColor: Color.theme.accent)
+                        RoundButtonWithIcon(systemName: "pencil", size: 32, backgroundColor: .white, imageColor: Color.theme.accent, imageSize: 15)
+                            .bold()
+                            .offset(x: 10, y: 10)
+                        
                     }
                     .padding(.top, 23)
                     

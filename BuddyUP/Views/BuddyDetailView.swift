@@ -56,11 +56,11 @@ struct BuddyDetailView: View {
                     .cornerRadius(15)
                     
                     HStack(spacing: 20) {
-                        RoundButtonWithIcon(systemName: "message", size: 53, backgroundColor: .green, imageColor: .white)
-                        RoundButtonWithIcon(systemName: "bell", size: 63, backgroundColor: .white, imageColor: Color.theme.accent)
-                        RoundButtonWithIcon(systemName: "xmark", size: 53, backgroundColor: .red, imageColor: .white)
+                        RoundButtonWithIcon(systemName: "message", size: 53, backgroundColor: .green, imageColor: .white, imageSize: 20)
+                        RoundButtonWithIcon(systemName: "bell", size: 63, backgroundColor: .white, imageColor: Color.theme.accent, imageSize: 40)
+                        RoundButtonWithIcon(systemName: "xmark", size: 53, backgroundColor: .red, imageColor: .white, imageSize: 15)
                     }
-                    .offset(y: 20)
+                    .offset(y: 30)
                 }
                
                 Text("I am executive at Ralph Lauren in NYC. Wanna talk about fashion, shopping, soap operas and dating? Text me!")

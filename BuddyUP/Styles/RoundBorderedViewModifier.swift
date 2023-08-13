@@ -10,20 +10,21 @@ import SwiftUI
 struct RoundBorderedViewModifier: ViewModifier {
     
     let foregroundColor: Color
+    let cornerRadius: CGFloat
     
     func body(content: Content) -> some View {
         content
             .bold()
             .foregroundColor(foregroundColor)
             .overlay(
-                RoundedRectangle(cornerRadius: 10)
+                RoundedRectangle(cornerRadius: cornerRadius)
                     .stroke(Color.theme.accent.opacity(0.4), lineWidth: 1.5)
             )
     }
 }
 
 extension View {
-    func withRoundBordered(foregroundColor: Color = .black) -> some View {
-        modifier(RoundBorderedViewModifier(foregroundColor: foregroundColor))
+    func withRoundBordered(foregroundColor: Color = .black, cornerRadius: CGFloat = 10) -> some View {
+        modifier(RoundBorderedViewModifier(foregroundColor: foregroundColor, cornerRadius: cornerRadius))
     }
 }
