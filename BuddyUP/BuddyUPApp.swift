@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import UIKit
 
 @main
 struct BuddyUPApp: App {
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
