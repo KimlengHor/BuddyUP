@@ -32,5 +32,5 @@ struct RoundButtonWithIcon: View {
 struct RoundButtonWithIcon_Previews: PreviewProvider {
     static var previews: some View {
         RoundButtonWithIcon(systemName: "pencil", size: 32, backgroundColor: .white, imageColor: Color.theme.accent)
-    }
+    ]
 }
