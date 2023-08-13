@@ -56,7 +56,7 @@ extension UserInformationView {
     private var nameSection: some View {
         VStack(alignment: .leading, spacing: 15) {
             textFieldTitle("Enter your name")
-            CustomTextField(text: $nameText, placeholder:  "Enter your name here")
+            CustomTextField(text: $nameText, placeholder:  "Enter your name here", cornerRadius: 10, height: 60)
         }
     }
     
@@ -64,9 +64,9 @@ extension UserInformationView {
         VStack(alignment: .leading, spacing: 15) {
             textFieldTitle("Date of birth")
             HStack {
-                CustomTextField(text: $monthText, placeholder: "Month")
-                CustomTextField(text: $dayText, placeholder: "Day")
-                CustomTextField(text: $yearText, placeholder: "Year")
+                CustomTextField(text: $monthText, placeholder: "Month", cornerRadius: 10, height: 60)
+                CustomTextField(text: $dayText, placeholder: "Day", cornerRadius: 10, height: 60)
+                CustomTextField(text: $yearText, placeholder: "Year", cornerRadius: 10, height: 60)
             }
         }
     }
