@@ -56,9 +56,15 @@ struct BuddyDetailView: View {
                     .cornerRadius(15)
                     
                     HStack(spacing: 20) {
-                        RoundButtonWithIcon(systemName: "message", size: 53, backgroundColor: .green, imageColor: .white, imageSize: 20)
-                        RoundButtonWithIcon(systemName: "bell", size: 63, backgroundColor: .white, imageColor: Color.theme.accent, imageSize: 40)
-                        RoundButtonWithIcon(systemName: "xmark", size: 53, backgroundColor: .red, imageColor: .white, imageSize: 15)
+                        RoundButtonWithIcon(systemName: "message", size: 53, backgroundColor: .green, imageColor: .white, imageSize: 20) {
+                            
+                        }
+                        RoundButtonWithIcon(systemName: "bell", size: 63, backgroundColor: .white, imageColor: Color.theme.accent, imageSize: 40) {
+                            
+                        }
+                        RoundButtonWithIcon(systemName: "xmark", size: 53, backgroundColor: .red, imageColor: .white, imageSize: 15) {
+                            
+                        }
                     }
                     .offset(y: 30)
                 }

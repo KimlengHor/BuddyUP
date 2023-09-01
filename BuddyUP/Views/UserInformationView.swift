@@ -121,8 +121,8 @@ extension UserInformationView {
     }
     
     private var continueButton: some View {
-        Button {
-            
+        NavigationLink {
+            MyInterestsView()
         } label: {
             Text("Continue")
                 .withDefaultButtonFormatting(

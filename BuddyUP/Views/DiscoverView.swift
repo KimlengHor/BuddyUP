@@ -18,17 +18,24 @@ struct DiscoverView: View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 45) {
                 ForEach(Range(0...5)) { index in
-                    BuddyTile()
+                    NavigationLink {
+                        BuddyDetailView()
+                    } label: {
+                        BuddyTile()
+                    }
                 }
             }
             .padding(24)
         }
+        .navigationTitle("Discover")
     }
 }
 
 struct DiscoverView_Previews: PreviewProvider {
     static var previews: some View {
-        DiscoverView()
+        NavigationStack {
+            DiscoverView()
+        }
     }
 }
 
@@ -41,8 +48,10 @@ struct BuddyTile: View {
             AsyncImage(url: URL(string: imageUrlString), content: { content in
                 content.image?
                     .resizable()
+                    .frame(width: 184, height: 250)
                     .scaledToFill()
             })
+            .frame(height: 250)
             
             VStack(spacing: 5) {
                 HStack {
