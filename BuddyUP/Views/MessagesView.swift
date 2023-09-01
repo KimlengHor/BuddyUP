@@ -28,10 +28,15 @@ struct MessagesView: View {
                 
                 LazyVStack(spacing: 24) {
                     ForEach(0..<10, id: \.self) { index in
-                        MessageTile()
+                        NavigationLink {
+                            MessageView()
+                        } label: {
+                            MessageTile()
+                        }
                     }
                 }
             }
+            .padding(.vertical, 24)
         }
         .navigationTitle("Messages")
     }
@@ -103,6 +108,7 @@ struct MessageTile: View {
                 HStack {
                     Text("Rachel")
                         .font(.headline)
+                        .foregroundColor(.black)
                     Spacer()
                     Text("13:25 PM")
                         .font(.caption)
@@ -113,6 +119,7 @@ struct MessageTile: View {
                     Text("Today i work in a cafe. Come here, we'll work to...")
                         .font(.subheadline)
                         .foregroundColor(.gray)
+                        .multilineTextAlignment(.leading)
                     Spacer(minLength: 50)
                     Text("1")
                         .frame(width: 25, height: 25)

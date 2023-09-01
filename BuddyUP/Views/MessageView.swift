@@ -51,8 +51,10 @@ struct MessageView: View {
                             .cornerRadius(radius: 20, corners: [.topLeft, .topRight, .bottomRight])
                             .shadow(color: .gray.opacity(0.2), radius: 30)
                             
-                            RoundButtonWithIcon(systemName: "heart.fill", size: 25, backgroundColor: Color.theme.chatBackground, imageColor: .white, imageSize: 10)
-                                .offset(x: -10, y: 15)
+                            RoundButtonWithIcon(systemName: "heart.fill", size: 25, backgroundColor: Color.theme.chatBackground, imageColor: .white, imageSize: 10) {
+                                
+                            }
+                            .offset(x: -10, y: 15)
                         }
                         
                         
@@ -94,8 +96,10 @@ struct MessageView: View {
                             .cornerRadius(radius: 20, corners: [.topLeft, .topRight, .bottomLeft])
                             .shadow(color: .gray.opacity(0.2), radius: 30)
                             
-                            RoundButtonWithIcon(systemName: "heart.fill", size: 25, backgroundColor: .white, imageColor: Color.theme.chatBackground, imageSize: 10)
-                                .offset(x: 10, y: 15)
+                            RoundButtonWithIcon(systemName: "heart.fill", size: 25, backgroundColor: .white, imageColor: Color.theme.chatBackground, imageSize: 10) {
+                                
+                            }
+                            .offset(x: 10, y: 15)
                         }
                         
                     }

@@ -36,17 +36,17 @@ struct SettingsView: View {
             }
         }
         .navigationTitle("Settings")
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button {
-                    
-                } label: {
-                    Text("Done")
-                        .bold()
-                }
-
-            }
-        }
+//        .toolbar {
+//            ToolbarItem(placement: .navigationBarTrailing) {
+//                Button {
+//
+//                } label: {
+//                    Text("Done")
+//                        .bold()
+//                }
+//
+//            }
+//        }
     }
 }
 

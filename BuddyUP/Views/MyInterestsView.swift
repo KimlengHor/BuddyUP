@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MyInterestsView: View {
     
+    @State private var showTabView: Bool = false
+    
     let interests = ["TV show", "music", "books", "sport", "shopping", "movie", "games", "drinks", "social n.", "family", "pets", "art", "dance", "bars", "travel", "wine tasting"]
     
     var body: some View {
@@ -21,6 +23,9 @@ struct MyInterestsView: View {
         }
         .padding(24)
         .navigationTitle("My interests")
+        .fullScreenCover(isPresented: $showTabView) {
+            BuddyUPTabView()
+        }
     }
 }
 
@@ -41,7 +46,7 @@ extension MyInterestsView {
     
     private var continueButton: some View {
         Button {
-            
+            showTabView.toggle()
         } label: {
             Text("Continue")
                 .withDefaultButtonFormatting(

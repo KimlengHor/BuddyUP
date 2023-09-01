@@ -13,7 +13,9 @@ struct BuddyUPApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack {
+                BoardingView()
+            }
         }
     }
 }

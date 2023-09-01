@@ -31,7 +31,9 @@ struct BoardingView: View {
 
 struct BoardingView_Previews: PreviewProvider {
     static var previews: some View {
-        BoardingView()
+        NavigationStack {
+            BoardingView()
+        }
     }
 }
 
@@ -85,8 +87,8 @@ extension BoardingView {
     
     private var buttonsSection: some View {
         VStack(spacing: 15) {
-            Button {
-                
+            NavigationLink {
+                SignupView()
             } label: {
                 Text("Next")
                     .bold()
@@ -95,8 +97,8 @@ extension BoardingView {
             }
             .buttonStyle(.borderedProminent)
             
-            Button {
-                
+            NavigationLink {
+                SignupView()
             } label: {
                 Text("Skip")
                     .bold()
