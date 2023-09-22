@@ -58,7 +58,7 @@ struct BoardingView_Previews: PreviewProvider {
 extension BoardingView {
     private var tabView: some View {
         TabView(selection: $tabViewSelection) {
-            ForEach(1..<4, id: \.self) { index in
+            ForEach(0..<3, id: \.self) { index in
                 Image("boarding\(index)")
                     .tag(index)
             }
