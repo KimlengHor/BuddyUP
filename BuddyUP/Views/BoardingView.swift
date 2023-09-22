@@ -7,6 +7,19 @@
 
 import SwiftUI
 
+class BoardingViewModel: ObservableObject {
+    @Published var titleText: String
+    private var titles = ["Share your UP", "Find your buddy", "Meet with your new friend"]
+    
+    init() {
+        self.titleText = titles[0]
+    }
+    
+    func changeTitleText(tabViewSelection: Int) {
+        titleText = titles[tabViewSelection]
+    }
+}
+
 struct BoardingView: View {
     
     init() {
@@ -14,7 +27,9 @@ struct BoardingView: View {
         UIPageControl.appearance().pageIndicatorTintColor = UIColor(named: "AccentColor")?.withAlphaComponent(0.2)
     }
     
-    @State private var tabViewSelection = 1
+    @StateObject private var boardingVM = BoardingViewModel()
+    
+    @State private var tabViewSelection = 0
     
     var body: some View {
         VStack {
@@ -25,6 +40,9 @@ struct BoardingView: View {
             informationSection
             
             buttonsSection
+        }
+        .onChange(of: tabViewSelection) { newValue in
+            boardingVM.changeTitleText(tabViewSelection: newValue)
         }
     }
 }
@@ -50,7 +68,7 @@ extension BoardingView {
     
     private var informationSection: some View {
         VStack(spacing: 17) {
-            Text("Share your UP")
+            Text(boardingVM.titleText)
                 .bold()
                 .font(.title)
             
