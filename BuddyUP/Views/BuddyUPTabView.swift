@@ -17,13 +17,13 @@ struct BuddyUPTabView: View {
                 DiscoverView()
             }
             .tabItem {
-                Image(systemName: "house")
+                Image(systemName: "magnifyingglass")
             }
             
-            Text("")
-                .tabItem {
-                    Image(systemName: "heart")
-                }
+//            Text("")
+//                .tabItem {
+//                    Image(systemName: "heart")
+//                }
             
             NavigationView {
                 MessagesView()

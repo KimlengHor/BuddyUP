@@ -9,31 +9,42 @@ import SwiftUI
 
 struct BuddyDetailView: View {
     
-    let imageUrlString = "https://images.unsplash.com/photo-1591946614720-90a587da4a36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
+//    let imageUrlString = "https://images.unsplash.com/photo-1591946614720-90a587da4a36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
+    
+    let image: String
+    let name: String
+    let tag: String
     
     var body: some View {
         ScrollView {
             VStack(spacing: 50) {
                 ZStack(alignment: .bottom) {
-                    ZStack(alignment: .bottom) {
-                        AsyncImage(url: URL(string: imageUrlString), content: { content in
-                            content.image?
-                                .resizable()
-                                .scaledToFill()
-                                .frame(height: 450)
-                                .cornerRadius(10)
-                                .shadow(color: Color.theme.accent.opacity(0.3), radius: 50)
-                        })
+                    VStack(spacing: 50) {
+//                        AsyncImage(url: URL(string: imageUrlString), content: { content in
+//                            content.image?
+//                                .resizable()
+//                                .scaledToFill()
+//                                .frame(height: 450)
+//                                .cornerRadius(10)
+//                                .shadow(color: Color.theme.accent.opacity(0.3), radius: 50)
+//                        })
+                        
+                        Image(image)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 300, height: 300)
+//                            .cornerRadius(10)
+//                            .shadow(color: Color.theme.accent.opacity(0.3), radius: 50)
                         
                         VStack(alignment: .leading) {
                             HStack {
                                 VStack(alignment: .leading) {
-                                    Text("Rachel Greene")
+                                    Text(name)
                                         .font(.title)
                                         .bold()
                                         .foregroundColor(.white)
                                     
-                                    Text("shopping")
+                                    Text(tag)
                                         .padding(10)
                                         .font(.subheadline)
                                         .bold()
@@ -53,6 +64,7 @@ struct BuddyDetailView: View {
                         .background(.black.opacity(0.3))
                         
                     }
+                    .background(Color.white)
                     .cornerRadius(15)
                     
                     HStack(spacing: 20) {
@@ -79,6 +91,6 @@ struct BuddyDetailView: View {
 
 struct BuddyDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        BuddyDetailView()
+        BuddyDetailView(image: "", name: "", tag: "")
     }
 }

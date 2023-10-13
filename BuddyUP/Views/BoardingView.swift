@@ -9,14 +9,19 @@ import SwiftUI
 
 class BoardingViewModel: ObservableObject {
     @Published var titleText: String
+    @Published var subTitleText: String
+    
     private var titles = ["Share your UP", "Find your buddy", "Meet with your new friend"]
+    private var subtitles = ["Explore activities around you according to your interests", "Plan your next activity with your new buddy", "Get to know each other and chat with your buddy"]
     
     init() {
         self.titleText = titles[0]
+        self.subTitleText = subtitles[0]
     }
     
     func changeTitleText(tabViewSelection: Int) {
         titleText = titles[tabViewSelection]
+        subTitleText = subtitles[tabViewSelection]
     }
 }
 
@@ -60,7 +65,11 @@ extension BoardingView {
         TabView(selection: $tabViewSelection) {
             ForEach(0..<3, id: \.self) { index in
                 Image("boarding\(index)")
+                    .resizable()
                     .tag(index)
+//                    .frame(width: 150, height: 150)
+                    .padding(40)
+                    .scaledToFit()
             }
         }
         .tabViewStyle(.page)
@@ -72,51 +81,66 @@ extension BoardingView {
                 .bold()
                 .font(.title)
             
-            VStack(spacing: 2) {
-                HStack(spacing: 5) {
-                    Text("Please read our")
-                        
-                    Button {
-                        
-                    } label: {
-                        Text("privacy policy")
-                            .underline()
-                    }
-                }
-                
-                HStack(spacing: 5) {
-                    Text("and")
-                        
-                    Button {
-                        
-                    } label: {
-                        Text("policy regarding")
-                            .underline()
-                    }
-                    
-                    Text("before registering")
-                }
-            }
-            .font(.callout)
-            .foregroundColor(Color.gray)
+//            VStack(spacing: 2) {
+//                HStack(spacing: 5) {
+//                    Text("Please read our")
+//
+//                    Button {
+//
+//                    } label: {
+//                        Text("privacy policy")
+//                            .underline()
+//                    }
+//                }
+//
+//                HStack(spacing: 5) {
+//                    Text("and")
+//
+//                    Button {
+//
+//                    } label: {
+//                        Text("policy regarding")
+//                            .underline()
+//                    }
+//
+//                    Text("before registering")
+//                }
+//            }
+            Text(boardingVM.subTitleText)
+                .multilineTextAlignment(.center)
+                .font(.callout)
+                .foregroundColor(Color.gray)
+                .frame(maxWidth: 300)
             
         }
     }
     
     private var buttonsSection: some View {
         VStack(spacing: 15) {
-            NavigationLink {
-                SignupView()
-            } label: {
-                Text("Next")
-                    .bold()
-                    .frame(height: 40)
-                    .frame(maxWidth: .infinity)
+            if tabViewSelection == 2 {
+                NavigationLink {
+                    SignupView(isLogin: false)
+                } label: {
+                    Text("Next")
+                        .bold()
+                        .frame(height: 40)
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.borderedProminent)
+            } else {
+                Button {
+                    tabViewSelection += 1
+                } label: {
+                    Text("Next")
+                        .bold()
+                        .frame(height: 40)
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.borderedProminent)
             }
-            .buttonStyle(.borderedProminent)
             
             NavigationLink {
-                SignupView()
+                SignupView(isLogin: false)
             } label: {
                 Text("Skip")
                     .bold()

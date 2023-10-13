@@ -11,12 +11,25 @@ struct MyInterestsView: View {
     
     @State private var showTabView: Bool = false
     
-    let interests = ["TV show", "music", "books", "sport", "shopping", "movie", "games", "drinks", "social n.", "family", "pets", "art", "dance", "bars", "travel", "wine tasting"]
+    let interests = ["Cooking/Baking", "Hiking", "Photography", "Gardening", "Painting/Drawing",
+                     "Reading/Book Clubs", "Cycling", "Running/Jogging", "Traveling", "Yoga",
+                     "Fishing", "Dancing", "Writing", "Knitting/Crocheting", "Board Games",
+                     "Gaming", "Volunteering", "DIY/Crafting", "Music (Instrument Playing)", "Film/TV Shows",
+                     "Swimming", "Meditation", "Chess", "Pottery", "Camping", "Singing",
+                     "Puzzles", "Bird Watching", "Fitness/Weightlifting", "Skiing/Snowboarding", "Surfing",
+                     "Scuba Diving", "Wine Tasting", "Collecting (Coins, Stamps, etc.)", "Rock Climbing", "Martial Arts",
+                     "Sailing", "Skydiving", "Language Learning", "Astrology", "Paintball", "Archery",
+                     "Parkour", "Horseback Riding", "Home Brewing", "Historical Reenactment", "Geocaching",
+                     "Dog Training", "Ice Skating", "Amateur Radio", "Candle Making", "Beekeeping", "Aquarium Keeping",
+                     "Fossil Hunting", "Metal Detecting", "Soap Making", "Sculpting", "DJing", "Robotics",
+                     "Magic Tricks", "Kite Flying", "Ballet", "Paddleboarding", "Urban Gardening", "Foraging",
+                     "Caving/Spelunking", "Astronomy", "Calligraphy", "Jewelry Making", "Woodworking", "Carpentry", "Bonsai",
+                     "Archaeology", "Ceramics", "Fencing"]
     
     var body: some View {
         VStack {
             interestTopic
-            
+           
             Spacer()
             
             continueButton
@@ -40,7 +53,9 @@ struct MyInterestsView_Previews: PreviewProvider {
 extension MyInterestsView {
     private var interestTopic: some View {
         GeometryReader { geometry in
-            self.generateContent(in: geometry)
+            ScrollView {
+                self.generateContent(in: geometry)
+            }
         }
     }
     

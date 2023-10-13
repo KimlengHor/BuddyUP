@@ -9,7 +9,8 @@ import SwiftUI
 
 struct MessageView: View {
     
-    let imageUrlString = "https://images.unsplash.com/photo-1591946614720-90a587da4a36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
+    let image: String
+    let name: String
     
     @State private var messageText = ""
     
@@ -22,14 +23,18 @@ struct MessageView: View {
                         .font(.footnote)
                     
                     HStack(spacing: 12) {
-                        AsyncImage(url: URL(string: imageUrlString), content: { content in
-                            content.image?
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 40, height: 40)
-                                .cornerRadius(10)
-                        })
-                        
+//                        AsyncImage(url: URL(string: imageUrlString), content: { content in
+//                            content.image?
+//                                .resizable()
+//                                .scaledToFill()
+//                                .frame(width: 40, height: 40)
+//                                .cornerRadius(10)
+//                        })
+                        Image(image)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 40, height: 40)
+                            .cornerRadius(10)
                         
                         ZStack(alignment: .bottomTrailing) {
                             VStack(spacing: 7) {
@@ -131,7 +136,7 @@ struct MessageView: View {
             .frame(height: 73)
             .frame(maxWidth: .infinity)
         }
-        .navigationTitle("Kimleng")
+        .navigationTitle(name)
         .navigationBarTitleDisplayMode(.inline)
     }
 }
@@ -139,7 +144,7 @@ struct MessageView: View {
 struct MessageView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            MessageView()
+            MessageView(image: "", name: "")
         }
     }
 }

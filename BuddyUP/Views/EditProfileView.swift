@@ -11,7 +11,7 @@ struct EditProfileView: View {
     
     @State private var showProfilePictureView: Bool = false
     
-    let imageUrlString = "https://images.unsplash.com/photo-1591946614720-90a587da4a36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
+//    let imageUrlString = "https://images.unsplash.com/photo-1591946614720-90a587da4a36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
     
     var body: some View {
         VStack {
@@ -19,14 +19,21 @@ struct EditProfileView: View {
                 VStack(spacing: 50) {
                     
                     ZStack(alignment: .bottomTrailing) {
-                        AsyncImage(url: URL(string: imageUrlString), content: { content in
-                            content.image?
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 160, height: 160)
-                                .cornerRadius(10)
-                                .shadow(color: Color.theme.accent.opacity(0.3), radius: 50)
-                        })
+//                        AsyncImage(url: URL(string: imageUrlString), content: { content in
+//                            content.image?
+//                                .resizable()
+//                                .scaledToFill()
+//                                .frame(width: 160, height: 160)
+//                                .cornerRadius(10)
+//                                .shadow(color: Color.theme.accent.opacity(0.3), radius: 50)
+//                        })
+                        Image("monica")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 160, height: 160)
+                            .cornerRadius(10)
+                            .shadow(color: Color.theme.accent.opacity(0.3), radius: 50)
+                        
                         
                         RoundButtonWithIcon(systemName: "pencil", size: 32, backgroundColor: .white, imageColor: Color.theme.accent, imageSize: 15) {
                             showProfilePictureView.toggle()

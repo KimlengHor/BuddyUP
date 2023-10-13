@@ -9,12 +9,45 @@ import SwiftUI
 
 struct SignupView: View {
     
+    let isLogin: Bool
+    
     @State private var emailText: String = ""
     @State private var passwordText: String = ""
     
     var body: some View {
         VStack(spacing: 15) {
             VStack(spacing: 33) {
+                
+                HStack(spacing: 0) {
+                    NavigationLink {
+                        UserInformationView()
+                    } label: {
+                        HStack {
+                            Image(systemName: "apple.logo")
+                            Text("Apple")
+                        }
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(.black)
+
+                    NavigationLink {
+                        UserInformationView()
+                    } label: {
+                        HStack {
+                            Image("google")
+                                .resizable()
+                                .frame(width: 17, height: 17)
+                            Text("Google")
+                        }
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(.red)
+                }
+                .bold()
+                .foregroundColor(.white)
+                .frame(height: 60)
+                .cornerRadius(10)
+                
                 emailSection
                 passwordSection
             }
@@ -25,7 +58,7 @@ struct SignupView: View {
             
             loginSection
         }
-        .navigationTitle("Sign up")
+        .navigationTitle(isLogin ? "Login" : "Sign up")
         .padding(24)
     }
 }
@@ -40,7 +73,7 @@ extension SignupView {
     
     private var emailSection: some View {
         VStack(alignment: .leading, spacing: 15) {
-            textFieldTitle("Enter your name")
+            textFieldTitle("Enter your email")
             CustomTextField(text: $emailText, placeholder:  "Enter your email here", cornerRadius: 10, height: 60)
         }
     }
@@ -65,11 +98,11 @@ extension SignupView {
     
     private var loginSection: some View {
         HStack {
-            Text("Already have an account?")
-            Button {
-                
+            Text(isLogin ? "No account yet?" : "Already have an account?")
+            NavigationLink {
+                SignupView(isLogin: !isLogin)
             } label: {
-                Text("Login")
+                Text(isLogin ? "Sign up" : "Login")
                     .bold()
                     .foregroundColor(.black)
             }
@@ -80,7 +113,7 @@ extension SignupView {
 struct SignupView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            SignupView()
+            SignupView(isLogin: false)
         }
     }
 }

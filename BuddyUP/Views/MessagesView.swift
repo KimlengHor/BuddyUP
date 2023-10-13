@@ -9,14 +9,28 @@ import SwiftUI
 
 struct MessagesView: View {
     
+    let names = ["Rachel Greene", "Gunther", "Phoebe Buffay", "Joey Tribbiani", "Chandler", "Richard Burke", "Buse", "Kim", "Jenna", "Ching"]
+    let messages = [
+        "Hello!",
+        "How are you?",
+        "What's up?",
+        "Nice weather today, isn't it?",
+        "Did you watch the game last night?",
+        "I'm working on a cool project.",
+        "Any plans for the weekend?",
+        "Have you seen the latest movie?",
+        "I love Swift programming!",
+        "Let's grab coffee sometime."
+    ]
+    
     var body: some View {
         ScrollView {
             VStack(spacing: 30) {
                 VStack {
                     ScrollView(.horizontal) {
                         LazyHStack(spacing: 15) {
-                            ForEach(0..<10, id: \.self) { index in
-                                StoryTile()
+                            ForEach(0..<4, id: \.self) { index in
+                                StoryTile(name: names[index], image: "name\(index + 2)")
                             }
                         }
                         .frame(height: 125)
@@ -27,11 +41,11 @@ struct MessagesView: View {
                 }
                 
                 LazyVStack(spacing: 24) {
-                    ForEach(0..<10, id: \.self) { index in
+                    ForEach(0..<6, id: \.self) { index in
                         NavigationLink {
-                            MessageView()
+                            MessageView(image: "name\(index + 1)", name: names[index])
                         } label: {
-                            MessageTile()
+                            MessageTile(name: names[index], image: "name\(index + 1)", message: messages[index])
                         }
                     }
                 }
@@ -54,20 +68,29 @@ struct StoryTile: View {
     
     let brandGradient = Gradient(colors: [Color(.systemTeal), Color(.systemPurple), Color(.systemOrange), Color(.systemTeal)])
     
-    let imageUrlString = "https://images.unsplash.com/photo-1591946614720-90a587da4a36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
+//    let imageUrlString = "https://images.unsplash.com/photo-1591946614720-90a587da4a36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
+    
+    let name: String
+    let image: String
     
     var body: some View {
         VStack {
             ZStack(alignment: .bottom) {
-                AsyncImage(url: URL(string: imageUrlString), content: { content in
-                    content.image?
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 80, height: 80)
-                        .cornerRadius(10)
-                })
+//                AsyncImage(url: URL(string: imageUrlString), content: { content in
+//                    content.image?
+//                        .resizable()
+//                        .scaledToFill()
+//                        .frame(width: 80, height: 80)
+//                        .cornerRadius(10)
+//                })
                 
-                Text("3.200")
+                Image(image)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 80, height: 80)
+                    .cornerRadius(10)
+                
+                Text(String(format: "%.3f", (Double(arc4random_uniform(5001) + 5000) / 1000.0 + 5.0)))
                     .padding(.horizontal, 5)
                     .font(.subheadline)
                     .bold()
@@ -85,28 +108,37 @@ struct StoryTile: View {
                             lineWidth: 3.5)
             )
             
-            Text("Ross")
+            Text(name)
         }
     }
 }
 
 struct MessageTile: View {
     
-    let imageUrlString = "https://images.unsplash.com/photo-1591946614720-90a587da4a36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
+//    let imageUrlString = "https://images.unsplash.com/photo-1591946614720-90a587da4a36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
+    let name: String
+    let image: String
+    let message: String
     
     var body: some View {
         HStack(spacing: 10) {
-            AsyncImage(url: URL(string: imageUrlString), content: { content in
-                content.image?
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 65, height: 65)
-                    .cornerRadius(10)
-            })
+//            AsyncImage(url: URL(string: imageUrlString), content: { content in
+//                content.image?
+//                    .resizable()
+//                    .scaledToFill()
+//                    .frame(width: 65, height: 65)
+//                    .cornerRadius(10)
+//            })
+            
+            Image(image)
+                .resizable()
+                .scaledToFill()
+                .frame(width: 65, height: 65)
+                .cornerRadius(10)
             
             VStack(alignment: .leading, spacing: 8) {
                 HStack {
-                    Text("Rachel")
+                    Text(name)
                         .font(.headline)
                         .foregroundColor(.black)
                     Spacer()
@@ -116,12 +148,12 @@ struct MessageTile: View {
                 }
                 
                 HStack {
-                    Text("Today i work in a cafe. Come here, we'll work to...")
+                    Text(message)
                         .font(.subheadline)
                         .foregroundColor(.gray)
                         .multilineTextAlignment(.leading)
                     Spacer(minLength: 50)
-                    Text("1")
+                    Text("\(arc4random_uniform(5) + 1)")
                         .frame(width: 25, height: 25)
                         .background(.red)
                         .foregroundColor(.white)
